@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Velvet Ribbons · Luxury Gift Wrapping Studio · Durham Region & GTA</title>
+<meta name="description" content="Velvet Ribbons is a luxury gift wrapping and packaging studio serving Durham Region and the GTA. Corporate gifting, baby showers, birthdays, Christmas, Thanksgiving, Diwali and housewarming.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..700,50;1,9..144,300..700,50&family=Figtree:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* palette sampled from the satin fabric */
+  --wine-black:#2B0715;     /* deepest fold */
+  --wine-deep:#4A0E26;      /* shadow */
+  --wine:#7E1C42;           /* body */
+  --wine-sheen:#A62C58;     /* satin highlight */
+  --gold:#C9A15C;
+  --gold-bright:#EDD494;
+  --blush:#F8EFF2;          /* rose-tinted paper */
+  --ivory:#FCFAF6;
+  --ink:#38101F;
+  --display:'Fraunces', Georgia, serif;
+  --body:'Figtree', 'Helvetica Neue', sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);color:var(--ink);background:var(--ivory);line-height:1.6;font-weight:400}
+
+/* ---------- utilities ---------- */
+.wrap{max-width:1140px;margin:0 auto;padding:0 24px}
+.eyebrow{font-family:var(--body);font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold-bright);font-weight:600;display:block;margin-bottom:14px}
+.eyebrow.on-light{color:#A57F3C}
+h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.12}
+h2{font-size:clamp(2rem,4.4vw,3.1rem);letter-spacing:-.01em}
+.lede{font-size:1.06rem;color:#6b3a4d;max-width:56ch;font-weight:300}
+a{color:inherit}
+:focus-visible{outline:2.5px solid var(--gold);outline-offset:3px;border-radius:4px}
+
+/* ---------- nav ---------- */
+nav{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(43,7,21,.9);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(201,161,92,.25)}
+.nav-inner{max-width:1140px;margin:0 auto;padding:16px 24px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:var(--display);font-size:1.32rem;color:var(--ivory);text-decoration:none;letter-spacing:.01em}
+.logo em{color:var(--gold-bright);font-style:italic}
+.nav-links{display:flex;gap:30px;align-items:center;list-style:none}
+.nav-links a{color:rgba(252,250,246,.82);text-decoration:none;font-size:.86rem;letter-spacing:.06em;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:var(--gold-bright)}
+.nav-cta{background:var(--gold);color:var(--wine-black)!important;padding:9px 20px;border-radius:100px;font-weight:600!important}
+.nav-cta:hover{background:var(--gold-bright)}
+@media(max-width:760px){.nav-links li:not(:last-child){display:none}}
+
+/* ---------- hero : satin backdrop, centered ---------- */
+header{
+  color:var(--ivory);
+  padding:190px 0 40px;
+  position:relative;
+  overflow:hidden;
+  text-align:center;
+  background:
+    radial-gradient(90% 70% at 18% 12%, rgba(166,44,88,.55), transparent 55%),
+    radial-gradient(70% 55% at 85% 20%, rgba(166,44,88,.4), transparent 60%),
+    radial-gradient(80% 60% at 70% 85%, rgba(126,28,66,.65), transparent 65%),
+    radial-gradient(60% 45% at 25% 80%, rgba(166,44,88,.3), transparent 60%),
+    linear-gradient(155deg, var(--wine) 0%, var(--wine-deep) 55%, var(--wine-black) 100%);
+}
+/* soft satin sheen sweeps */
+header::before{content:"";position:absolute;inset:0;pointer-events:none;background:
+  linear-gradient(115deg, transparent 30%, rgba(255,255,255,.06) 44%, transparent 56%),
+  linear-gradient(65deg, transparent 55%, rgba(255,255,255,.045) 68%, transparent 80%)}
+.hero-copy{position:relative;z-index:2;max-width:780px;margin:0 auto;padding:0 24px}
+.hero-copy h1{font-size:clamp(3rem,6.6vw,5.1rem);letter-spacing:-.015em}
+.hero-copy h1 .ribbon-word{position:relative;font-style:italic;color:var(--gold-bright);white-space:nowrap}
+.hero-copy h1 .ribbon-word svg{position:absolute;left:-2%;bottom:-.28em;width:104%;height:.5em;overflow:visible}
+.hero-copy p{margin:28px auto 38px;font-size:1.12rem;color:rgba(252,250,246,.82);max-width:52ch;font-weight:300}
+.hero-ctas{display:flex;gap:16px;flex-wrap:wrap;justify-content:center}
+.btn{display:inline-block;text-decoration:none;font-weight:600;font-size:.94rem;padding:15px 32px;border-radius:100px;letter-spacing:.03em;transition:transform .2s, box-shadow .2s, background .2s}
+.btn-gold{background:linear-gradient(135deg,var(--gold-bright),var(--gold));color:var(--wine-black);box-shadow:0 8px 26px rgba(0,0,0,.35)}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(0,0,0,.45)}
+.btn-ghost{border:1.5px solid rgba(237,212,148,.55);color:var(--gold-bright)}
+.btn-ghost:hover{background:rgba(237,212,148,.1)}
+.hero-note{margin-top:34px;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(237,212,148,.7)}
+
+/* ambient sparkle field */
+.stars{position:absolute;inset:0;pointer-events:none;z-index:1}
+.stars .st{position:absolute;color:var(--gold-bright);animation:twinkle 3.2s ease-in-out infinite;text-shadow:0 0 10px rgba(237,212,148,.8)}
+@keyframes twinkle{0%,100%{opacity:.15;transform:scale(.7) rotate(0deg)}50%{opacity:1;transform:scale(1.15) rotate(18deg)}}
+
+/* ribbon divider */
+.ribbon-divider{display:block;width:100%;height:70px;margin-bottom:-1px;position:relative;z-index:2;margin-top:70px}
+
+@media(max-width:860px){header{padding-top:150px}}
+
+/* ---------- occasions ---------- */
+#occasions{padding:96px 0 100px;background:var(--ivory);position:relative}
+.occ-head{max-width:640px;margin-bottom:56px}
+.occ-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:22px}
+.occ-card{position:relative;border-radius:18px;padding:34px 28px 30px;background:var(--blush);border:1px solid #EEDCE3;overflow:hidden;transition:transform .25s ease, box-shadow .25s ease}
+.occ-card:hover{transform:translateY(-5px);box-shadow:0 18px 40px rgba(74,14,38,.14)}
+.occ-card::before{content:"";position:absolute;top:0;left:28px;width:7px;height:100%;background:var(--card-ribbon,var(--gold));opacity:.9}
+.occ-card::after{content:"✦";position:absolute;top:18px;right:20px;color:var(--gold);opacity:0;font-size:.95rem;transition:opacity .3s;text-shadow:0 0 8px rgba(201,161,92,.7)}
+.occ-card:hover::after{opacity:1;animation:twinkle 1.6s ease-in-out infinite}
+.occ-card:hover::before{animation:ribbonPull .5s ease}
+@keyframes ribbonPull{0%{transform:scaleY(0);transform-origin:top}100%{transform:scaleY(1)}}
+.occ-icon{font-size:1.7rem;margin-bottom:16px;display:block;margin-left:26px}
+.occ-card h3{font-size:1.5rem;margin:0 0 10px 26px;font-style:italic}
+.occ-card p{font-size:.93rem;color:#75455a;margin-left:26px;font-weight:300}
+.occ-card .tagline{display:block;margin:16px 0 0 26px;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:#A57F3C;font-weight:600}
+.occ-corporate{--card-ribbon:#C9A15C;background:linear-gradient(150deg,#3A0B1E,#7E1C42);color:var(--ivory);border-color:transparent}
+.occ-corporate p{color:rgba(252,250,246,.78)}
+.occ-corporate .tagline{color:var(--gold-bright)}
+.occ-diwali{--card-ribbon:#D4682B}
+.occ-christmas{--card-ribbon:#1F4D33}
+.occ-baby{--card-ribbon:#D9A9C9}
+.occ-birthday{--card-ribbon:#A62C58}
+.occ-thanks{--card-ribbon:#A9702F}
+.occ-house{--card-ribbon:#7B8460}
+
+/* ---------- how it works ---------- */
+#how{background:linear-gradient(160deg,var(--wine-black),var(--wine-deep) 55%,var(--wine));color:var(--ivory);padding:100px 0;position:relative;overflow:hidden}
+#how h2{color:var(--ivory)}
+.how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:60px;position:relative;z-index:1}
+.how-step{padding-top:26px;border-top:1.5px solid rgba(201,161,92,.4);position:relative}
+.how-step::before{content:"";position:absolute;top:-7px;left:0;width:13px;height:13px;border-radius:50%;background:var(--gold);box-shadow:0 0 12px rgba(237,212,148,.7)}
+.how-step h3{font-size:1.42rem;margin-bottom:12px;font-style:italic;color:var(--gold-bright)}
+.how-step p{font-size:.95rem;color:rgba(252,250,246,.75);font-weight:300}
+.thread{position:absolute;right:-60px;top:10%;width:420px;opacity:.14;pointer-events:none}
+@media(max-width:820px){.how-grid{grid-template-columns:1fr;gap:34px}}
+
+/* ---------- corporate strip ---------- */
+#corporate{padding:96px 0;background:var(--blush)}
+.corp-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.corp-list{list-style:none;margin-top:28px}
+.corp-list li{padding:13px 0 13px 36px;position:relative;border-bottom:1px solid #E9D2DC;font-size:.97rem;color:#4f2436}
+.corp-list li::before{content:"✦";position:absolute;left:4px;color:var(--gold);font-size:.85rem}
+.corp-panel{background:linear-gradient(160deg,var(--wine),var(--wine-black));color:var(--ivory);border-radius:20px;padding:44px 40px;box-shadow:0 24px 55px rgba(43,7,21,.3);position:relative;overflow:hidden}
+.corp-panel::after{content:"✦   ✧   ✦";position:absolute;top:16px;right:22px;color:rgba(237,212,148,.4);letter-spacing:.4em;font-size:.8rem}
+.corp-panel h3{font-size:1.7rem;font-style:italic;color:var(--gold-bright);margin-bottom:14px}
+.corp-panel p{font-size:.95rem;color:rgba(252,250,246,.8);font-weight:300;margin-bottom:26px}
+@media(max-width:820px){.corp-grid{grid-template-columns:1fr}}
+
+/* ---------- founders ---------- */
+#about{padding:100px 0;background:var(--ivory)}
+.about-inner{max-width:760px;margin:0 auto;text-align:center}
+.about-inner h2{margin-bottom:22px}
+.about-inner .lede{margin:0 auto}
+.founders{display:flex;gap:26px;justify-content:center;margin-top:48px;flex-wrap:wrap}
+.founder{background:var(--blush);border:1px solid #EEDCE3;border-radius:16px;padding:30px 36px;min-width:230px}
+.founder .initial{font-family:var(--display);font-style:italic;font-size:2.4rem;color:var(--gold);line-height:1}
+.founder h3{font-size:1.25rem;margin:10px 0 4px}
+.founder p{font-size:.85rem;color:#8d5c70;letter-spacing:.06em;text-transform:uppercase;font-weight:500}
+
+/* ---------- contact ---------- */
+#contact{
+  color:var(--ivory);padding:100px 0 90px;text-align:center;position:relative;overflow:hidden;
+  background:
+    radial-gradient(80% 60% at 30% 100%, rgba(166,44,88,.5), transparent 60%),
+    radial-gradient(70% 50% at 80% 10%, rgba(166,44,88,.3), transparent 60%),
+    linear-gradient(200deg, var(--wine-deep), var(--wine-black) 80%);
+}
+#contact h2{color:var(--ivory)}
+#contact .lede{color:rgba(252,250,246,.78);margin:18px auto 40px}
+.contact-card{max-width:560px;margin:0 auto;background:rgba(252,250,246,.05);border:1px solid rgba(201,161,92,.3);border-radius:20px;padding:40px 34px;backdrop-filter:blur(6px);position:relative;z-index:2}
+.field{margin-bottom:18px;text-align:left}
+.field label{display:block;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-bright);margin-bottom:7px;font-weight:600}
+.field input,.field select,.field textarea{width:100%;padding:13px 15px;border-radius:10px;border:1px solid rgba(201,161,92,.35);background:rgba(43,7,21,.5);color:var(--ivory);font-family:var(--body);font-size:.95rem}
+.field input::placeholder,.field textarea::placeholder{color:rgba(252,250,246,.4)}
+.field select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23C9A15C' stroke-width='2' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center}
+.contact-alt{margin-top:30px;font-size:.9rem;color:rgba(252,250,246,.65)}
+.contact-alt a{color:var(--gold-bright);text-decoration:none;font-weight:600}
+.contact-alt a:hover{text-decoration:underline}
+
+/* ---------- footer ---------- */
+footer{background:#1E0510;color:rgba(252,250,246,.6);padding:36px 0;font-size:.85rem}
+.foot-inner{max-width:1140px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.foot-inner .logo{font-size:1.1rem}
+footer a{color:var(--gold);text-decoration:none}
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<nav aria-label="Main">
+  <div class="nav-inner">
+    <a class="logo" href="#top">Velvet <em>Ribbons</em></a>
+    <ul class="nav-links">
+      <li><a href="#occasions">Occasions</a></li>
+      <li><a href="#how">How it works</a></li>
+      <li><a href="#corporate">Corporate</a></li>
+      <li><a href="#about">Our story</a></li>
+      <li><a class="nav-cta" href="#contact">Book a wrap</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header id="top">
+  <div class="stars" aria-hidden="true">
+    <span class="st" style="top:16%;left:8%;font-size:1rem">✦</span>
+    <span class="st" style="top:26%;left:24%;font-size:.65rem;animation-delay:.6s">✧</span>
+    <span class="st" style="top:12%;right:14%;font-size:1.2rem;animation-delay:1.2s">✦</span>
+    <span class="st" style="top:44%;left:5%;font-size:.8rem;animation-delay:1.8s">✧</span>
+    <span class="st" style="top:38%;right:7%;font-size:.9rem;animation-delay:.3s">✦</span>
+    <span class="st" style="top:70%;left:16%;font-size:.7rem;animation-delay:2.3s">✧</span>
+    <span class="st" style="top:64%;right:20%;font-size:.75rem;animation-delay:1.5s">✦</span>
+    <span class="st" style="top:82%;right:38%;font-size:.6rem;animation-delay:.9s">✧</span>
+    <span class="st" style="top:20%;left:44%;font-size:.55rem;animation-delay:2.8s">✦</span>
+  </div>
+  <div class="hero-copy">
+    <span class="eyebrow">Luxury gift wrapping studio · Durham Region & GTA</span>
+    <h1>Every gift deserves a<br>
+      <span class="ribbon-word">velvet ribbon
+        <svg viewBox="0 0 300 24" aria-hidden="true" preserveAspectRatio="none">
+          <path d="M2 14 C 60 2, 120 24, 180 12 S 280 4, 298 14" fill="none" stroke="#EDD494" stroke-width="4.5" stroke-linecap="round" opacity=".9"/>
+        </svg>
+      </span>
+    </h1>
+    <p>We hand-wrap your gifts in rich papers, silk ribbons and signature bows — so the unwrapping feels as special as what's inside. Drop off, or we come to you.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-gold" href="#contact">Book a wrap</a>
+      <a class="btn btn-ghost" href="#occasions">Explore occasions</a>
+    </div>
+    <p class="hero-note">By Geetika & Nidhi · @velvetribbons</p>
+  </div>
+  <svg class="ribbon-divider" viewBox="0 0 1440 70" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 70 L0 40 C 240 0, 480 70, 720 38 S 1200 0, 1440 42 L1440 70 Z" fill="#FCFAF6"/>
+    <path d="M0 44 C 240 4, 480 74, 720 42 S 1200 4, 1440 46" fill="none" stroke="#C9A15C" stroke-width="2.5" opacity=".7"/>
+  </svg>
+</header>
+
+<section id="occasions">
+  <div class="wrap">
+    <div class="occ-head">
+      <span class="eyebrow on-light">What we wrap for</span>
+      <h2>Seven occasions, one signature finish.</h2>
+    </div>
+    <div class="occ-grid">
+      <article class="occ-card occ-corporate">
+        <span class="occ-icon" aria-hidden="true">🎁</span>
+        <h3>Corporate gifting</h3>
+        <p>Client gifts, employee appreciation and event favours — branded ribbon, bulk pricing and on-time delivery for teams of any size.</p>
+        <span class="tagline">Volume orders welcome</span>
+      </article>
+      <article class="occ-card occ-baby">
+        <span class="occ-icon" aria-hidden="true">🍼</span>
+        <h3>Baby showers</h3>
+        <p>Soft palettes, keepsake boxes and delicate bows for welcoming the newest guest of honour.</p>
+        <span class="tagline">Keepsake-worthy</span>
+      </article>
+      <article class="occ-card occ-birthday">
+        <span class="occ-icon" aria-hidden="true">🎂</span>
+        <h3>Birthdays</h3>
+        <p>From milestone celebrations to just-because surprises, wrapped to match the person, not just the party.</p>
+        <span class="tagline">Made personal</span>
+      </article>
+      <article class="occ-card occ-christmas">
+        <span class="occ-icon" aria-hidden="true">🎄</span>
+        <h3>Christmas</h3>
+        <p>Under-the-tree magic: velvet ribbon, gilded papers and coordinated family sets. Book early — December fills fast.</p>
+        <span class="tagline">Seasonal waitlist</span>
+      </article>
+      <article class="occ-card occ-thanks">
+        <span class="occ-icon" aria-hidden="true">🍂</span>
+        <h3>Thanksgiving</h3>
+        <p>Warm, harvest-toned wrapping for host gifts, gratitude baskets and table favours.</p>
+        <span class="tagline">Host with heart</span>
+      </article>
+      <article class="occ-card occ-diwali">
+        <span class="occ-icon" aria-hidden="true">🪔</span>
+        <h3>Diwali</h3>
+        <p>Jewel tones, gold accents and festive trims for mithai boxes, hampers and gifts that glow with the season of lights.</p>
+        <span class="tagline">Festival of lights</span>
+      </article>
+      <article class="occ-card occ-house">
+        <span class="occ-icon" aria-hidden="true">🏡</span>
+        <h3>Housewarming</h3>
+        <p>Elegant wraps for new-home gifts — from wine and candles to full welcome baskets.</p>
+        <span class="tagline">New beginnings</span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="how">
+  <svg class="thread" viewBox="0 0 400 600" aria-hidden="true">
+    <path d="M340 0 C 200 140, 420 260, 240 380 S 60 540, 180 600" fill="none" stroke="#EDD494" stroke-width="10" stroke-linecap="round"/>
+  </svg>
+  <div class="wrap">
+    <span class="eyebrow">How it works</span>
+    <h2>From your hands to theirs, beautifully.</h2>
+    <div class="how-grid">
+      <div class="how-step">
+        <h3>Tell us the occasion</h3>
+        <p>Share what you're gifting and the moment it's for. We'll suggest papers, ribbons and finishes that fit.</p>
+      </div>
+      <div class="how-step">
+        <h3>We wrap by hand</h3>
+        <p>Crisp folds, silk ribbon, signature bow. Add gift tags, wax seals or fresh trims for the final flourish.</p>
+      </div>
+      <div class="how-step">
+        <h3>Pick up or delivery</h3>
+        <p>Collect from our Whitby studio, or have finished gifts delivered anywhere in Durham Region and the GTA.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="corporate">
+  <div class="wrap corp-grid">
+    <div>
+      <span class="eyebrow on-light">For businesses</span>
+      <h2>Make your brand the best-dressed gift in the room.</h2>
+      <ul class="corp-list">
+        <li>Client & employee gifting programs, wrapped at volume</li>
+        <li>Custom ribbon and tags in your brand colours</li>
+        <li>Holiday campaigns — Christmas, Diwali and year-end</li>
+        <li>Event favours, conference gifts and launch kits</li>
+        <li>HST invoicing and scheduled delivery for offices</li>
+      </ul>
+    </div>
+    <div class="corp-panel">
+      <h3>Corporate enquiries</h3>
+      <p>Tell us your headcount, timeline and budget — we'll send a tailored quote within two business days, with sample finishes to choose from.</p>
+      <a class="btn btn-gold" href="#contact">Request a corporate quote</a>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap about-inner">
+    <span class="eyebrow on-light">Our story</span>
+    <h2>Two friends, one shared obsession: the perfect bow.</h2>
+    <p class="lede">Velvet Ribbons was founded by Geetika and Nidhi, who believe the way a gift is given says as much as the gift itself. What began as wrapping for friends and family celebrations has grown into a full studio serving homes and businesses across Durham Region and the GTA.</p>
+    <div class="founders">
+      <div class="founder">
+        <span class="initial">G</span>
+        <h3>Geetika</h3>
+        <p>Co-founder · Design</p>
+      </div>
+      <div class="founder">
+        <span class="initial">N</span>
+        <h3>Nidhi</h3>
+        <p>Co-founder · Client care</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="stars" aria-hidden="true">
+    <span class="st" style="top:12%;left:10%;font-size:.9rem">✦</span>
+    <span class="st" style="top:20%;right:14%;font-size:.7rem;animation-delay:1s">✧</span>
+    <span class="st" style="bottom:16%;left:20%;font-size:.75rem;animation-delay:2s">✦</span>
+    <span class="st" style="bottom:24%;right:8%;font-size:1rem;animation-delay:.5s">✧</span>
+  </div>
+  <div class="wrap">
+    <span class="eyebrow">Book a wrap</span>
+    <h2>Let's make it unforgettable.</h2>
+    <p class="lede">Tell us about your occasion and we'll reply within one business day.</p>
+    <div class="contact-card">
+      <div class="field">
+        <label for="name">Your name</label>
+        <input id="name" type="text" placeholder="Full name" autocomplete="name">
+      </div>
+      <div class="field">
+        <label for="occasion">Occasion</label>
+        <select id="occasion">
+          <option>Corporate gifting</option>
+          <option>Baby shower</option>
+          <option>Birthday</option>
+          <option>Christmas</option>
+          <option>Thanksgiving</option>
+          <option>Diwali</option>
+          <option>Housewarming</option>
+          <option>Something else</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="details">Tell us more</label>
+        <textarea id="details" rows="4" placeholder="Number of gifts, dates, colours you love…"></textarea>
+      </div>
+      <button class="btn btn-gold" style="width:100%;border:none;cursor:pointer;font-family:var(--body)" onclick="sendEnquiry()">Send enquiry</button>
+      <p class="contact-alt">Or DM us on Instagram — <a href="https://instagram.com/velvetribbons" target="_blank" rel="noopener">@velvetribbons</a></p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-inner">
+    <a class="logo" href="#top">Velvet <em>Ribbons</em></a>
+    <span>Whitby · Durham Region · GTA</span>
+    <span>© 2026 Velvet Ribbons · <a href="https://instagram.com/velvetribbons" target="_blank" rel="noopener">@velvetribbons</a> · velvetribbons.ca</span>
+  </div>
+</footer>
+
+<script>
+function sendEnquiry(){
+  const name = document.getElementById('name').value.trim();
+  const occasion = document.getElementById('occasion').value;
+  const details = document.getElementById('details').value.trim();
+  const subject = encodeURIComponent('Velvet Ribbons enquiry — ' + occasion);
+  const body = encodeURIComponent('Name: ' + name + '\nOccasion: ' + occasion + '\n\n' + details);
+  window.location.href = 'mailto:hello@velvetribbons.ca?subject=' + subject + '&body=' + body;
+}
+</script>
+</body>
+</html>
