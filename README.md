@@ -44,49 +44,20 @@ SWA → Custom domains → Add:
 ## Contact and booking enquiries
 
 All booking and corporate quote buttons lead to the shared enquiry form.
-The form posts to `/api/enquiry`; it does not launch an email application.
-The Azure Function sends a plain-text email to a recipient stored in backend
-application settings, with the visitor's email as Reply-To. Neither the
-recipient nor credentials appear in the public HTML, JavaScript or API responses.
+Sending an enquiry opens the visitor's email application addressed to
+`info@velvetribbons.ca`. The visitor must send the composed email to complete
+the enquiry. The destination Gmail inbox is not included in the website.
 
-### Required private configuration before production deployment
+Before deploying this change, configure an email forwarding service to receive
+mail for the domain and forward `info@velvetribbons.ca` to the intended private
+Gmail inbox. Add the MX records supplied by that service in GoDaddy DNS, and
+verify delivery to the alias. MX records alone do not define a forwarding rule.
+Do not set an MX target to an email address or to gmail.com.
 
-In the Azure portal, open the Static Web App matching
-`polite-bay-02cdf1710.7.azurestaticapps.net`, then Settings → Environment variables
-(or Configuration / Application settings, depending on the portal view).
-Add these settings for the production environment:
+If the GoDaddy account has its Email Forwarding product, use Email & Office
+Dashboard → Forwards → Add Forward. Otherwise an email hosting or forwarding
+service is required. See [GoDaddy forwarding instructions](https://www.godaddy.com/en-ca/help/create-edit-or-delete-forwards-with-email-forwarding-42254).
 
-| Setting | Value |
-| --- | --- |
-| `CONTACT_TO` | The requested destination inbox |
-| `SMTP_USER` | The Gmail account used to send, normally the same inbox |
-| `SMTP_PASSWORD` | A Google app password for that account |
-| `SMTP_HOST` | `smtp.gmail.com` (default; change for another SMTP provider) |
-| `SMTP_PORT` | `465` (default; port 587 uses mandatory STARTTLS) |
-
-For Gmail, the account owner must enable 2-Step Verification and create an app
-password at https://myaccount.google.com/apppasswords. Store the app password
-only in backend settings, never in source code, frontend settings, a PR or chat.
-See [Google's app-password instructions](https://support.google.com/accounts/answer/185833).
-For another SMTP service, use that service's authenticated sending account and
-credentials; the destination inbox remains independently configurable.
-
-The default accepted browser origins are the root domain, `www` and the
-production Azure hostname. For a PR preview, set `CONTACT_ALLOWED_ORIGINS` in
-that preview environment to its exact origin. This check and the honeypot
-block basic browser/bot abuse; they are not a distributed rate limiter.
-
-The workflow now deploys `api/` alongside `src/`. Do not deploy the new form to
-production until email credentials are configured: otherwise submissions
-correctly report a delivery failure instead of claiming success.
-
-### Verification
-
-Run `npm ci` and `npm test` inside `api/`. Tests cover validation, private
-recipient routing, SMTP rejection/failure, secret redaction, public asset
-privacy, and browser success/failure/duplicate submission behavior.
-
-After configuring the production settings and deploying, submit an enquiry
-through https://velvetribbons.ca and verify it reaches the requested inbox.
-Repeat on https://www.velvetribbons.ca. Confirm Reply-To is the visitor's email.
-A local test passing does not confirm live Gmail delivery.
+This approach hides Gmail from website visitors; the public `info@` alias is
+visible in the email composer. Replies sent directly from Gmail show that
+Gmail address unless a separate send-as service is configured.
