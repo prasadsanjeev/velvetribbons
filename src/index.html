@@ -165,6 +165,9 @@ header::before{content:"";position:absolute;inset:0;pointer-events:none;backgrou
 .field input,.field select,.field textarea{width:100%;padding:13px 15px;border-radius:10px;border:1px solid rgba(201,161,92,.35);background:rgba(43,7,21,.5);color:var(--ivory);font-family:var(--body);font-size:.95rem}
 .field input::placeholder,.field textarea::placeholder{color:rgba(252,250,246,.4)}
 .field select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23C9A15C' stroke-width='2' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center}
+.form-trap{position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden}
+.form-status{margin-top:18px;font-size:.95rem}
+.contact-card button:disabled{opacity:.65;cursor:wait}
 .contact-alt{margin-top:30px;font-size:.9rem;color:rgba(252,250,246,.65)}
 .contact-alt a{color:var(--gold-bright);text-decoration:none;font-weight:600}
 .contact-alt a:hover{text-decoration:underline}
@@ -359,14 +362,18 @@ footer a{color:var(--gold);text-decoration:none}
     <span class="eyebrow">Book a wrap</span>
     <h2>Let's make it unforgettable.</h2>
     <p class="lede">Tell us about your occasion and we'll reply within one business day.</p>
-    <div class="contact-card">
+    <form class="contact-card" id="enquiry-form" action="/api/enquiry" method="post">
       <div class="field">
         <label for="name">Your name</label>
-        <input id="name" type="text" placeholder="Full name" autocomplete="name">
+        <input id="name" name="name" type="text" placeholder="Full name" autocomplete="name" maxlength="100" required>
+      </div>
+      <div class="field">
+        <label for="email">Your email</label>
+        <input id="email" name="email" type="email" placeholder="Where we can reply to you" autocomplete="email" maxlength="254" required>
       </div>
       <div class="field">
         <label for="occasion">Occasion</label>
-        <select id="occasion">
+        <select id="occasion" name="occasion" required>
           <option>Corporate gifting</option>
           <option>Baby shower</option>
           <option>Birthday</option>
@@ -379,11 +386,14 @@ footer a{color:var(--gold);text-decoration:none}
       </div>
       <div class="field">
         <label for="details">Tell us more</label>
-        <textarea id="details" rows="4" placeholder="Number of gifts, dates, colours you love…"></textarea>
+        <textarea id="details" name="details" maxlength="4000" required rows="4" placeholder="Number of gifts, dates, colours you love…"></textarea>
       </div>
-      <button class="btn btn-gold" style="width:100%;border:none;cursor:pointer;font-family:var(--body)" onclick="sendEnquiry()">Send enquiry</button>
+      <div class="form-trap" aria-hidden="true"><label for="website">Website</label><input id="website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+      <button id="send-enquiry" type="submit" class="btn btn-gold" style="width:100%;border:none;cursor:pointer;font-family:var(--body)">Send enquiry</button>
+      <p id="form-status" class="form-status" role="status" aria-live="polite" tabindex="-1"></p>
+      <noscript><p>Please enable JavaScript to send an enquiry, or contact us on Instagram.</p></noscript>
       <p class="contact-alt">Or DM us on Instagram — <a href="https://instagram.com/velvetribbons" target="_blank" rel="noopener">@velvetribbons</a></p>
-    </div>
+    </form>
   </div>
 </section>
 
@@ -395,15 +405,6 @@ footer a{color:var(--gold);text-decoration:none}
   </div>
 </footer>
 
-<script>
-function sendEnquiry(){
-  const name = document.getElementById('name').value.trim();
-  const occasion = document.getElementById('occasion').value;
-  const details = document.getElementById('details').value.trim();
-  const subject = encodeURIComponent('Velvet Ribbons enquiry — ' + occasion);
-  const body = encodeURIComponent('Name: ' + name + '\nOccasion: ' + occasion + '\n\n' + details);
-  window.location.href = 'mailto:hello@velvetribbons.ca?subject=' + subject + '&body=' + body;
-}
-</script>
+<script src="/contact.js" defer></script>
 </body>
 </html>
