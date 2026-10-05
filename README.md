@@ -41,7 +41,23 @@ SWA → Custom domains → Add:
 3. SWA → Custom domains → set `velvetribbons.ca` as default so
    www redirects to apex. SSL certificates are automatic and free.
 
-## Contact form
-Currently uses mailto: (opens the visitor's email app). For a true
-backend form later, add an Azure Function under /api and post to it,
-or swap in Formspree/Web3Forms with one HTML change.
+## Contact and booking enquiries
+
+All booking and corporate quote buttons lead to the shared enquiry form.
+Sending an enquiry opens the visitor's email application addressed to
+`hello@velvetribbons.ca`. The visitor must send the composed email to complete
+the enquiry. The destination Gmail inbox is not included in the website.
+
+Before deploying this change, configure an email forwarding service to receive
+mail for the domain and forward `hello@velvetribbons.ca` to the intended private
+Gmail inbox. Add the MX records supplied by that service in GoDaddy DNS, and
+verify delivery to the alias. MX records alone do not define a forwarding rule.
+Do not set an MX target to an email address or to gmail.com.
+
+If the GoDaddy account has its Email Forwarding product, use Email & Office
+Dashboard → Forwards → Add Forward. Otherwise an email hosting or forwarding
+service is required. See [GoDaddy forwarding instructions](https://www.godaddy.com/en-ca/help/create-edit-or-delete-forwards-with-email-forwarding-42254).
+
+This approach hides Gmail from website visitors; the public `hello@` alias is
+visible in the email composer. Replies sent directly from Gmail show that
+Gmail address unless a separate send-as service is configured.
