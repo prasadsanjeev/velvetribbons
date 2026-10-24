@@ -42,6 +42,7 @@ SWA → Custom domains → Add:
    www redirects to apex. SSL certificates are automatic and free.
 
 ## Contact form
-Currently uses mailto: (opens the visitor's email app). For a true
-backend form later, add an Azure Function under /api and post to it,
-or swap in Formspree/Web3Forms with one HTML change.
+Submits to Web3Forms (https://web3forms.com), which emails each enquiry
+to the inbox registered with the `access_key` hidden field in
+`src/index.html`. The key is designed to be public. If the key is
+removed, the form falls back to mailto: (opens the visitor's email app).
