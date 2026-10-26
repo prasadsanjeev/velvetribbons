@@ -1,0 +1,5 @@
+# Velvet Ribbons: all search engines and AI assistants are welcome
+User-agent: *
+Allow: /
+
+Sitemap: https://velvetribbons.ca/sitemap.xml
